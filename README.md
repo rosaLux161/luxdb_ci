@@ -1,2 +1,1 @@
 # luxdb_ci
-Test
