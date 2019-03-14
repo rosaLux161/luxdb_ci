@@ -11,7 +11,6 @@
 						$data= array(
 						'name' => 'surname',
 						'placeholder' => 'Nachname',
-						'class' => 'input_box'
 						);
 						echo form_input($data);
 
@@ -19,7 +18,6 @@
 						$data= array(
 						'name' => 'firstname',
 						'placeholder' => 'Vorname',
-						'class' => 'input_box'
 						);
 						echo form_input($data);
 						echo '<br>';

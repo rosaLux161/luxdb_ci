@@ -14,27 +14,20 @@ class Customer extends CI_Controller {
     #   Methoden zum Hinzufügen eines Kunden
     ###
     public function add($sent = ""){
-        if(strcmp($sent, "sent") == 0){
-
-        }else{
-            $data['page_title'] = 'Kunden hinzufügen';
-            $this->load->view('templates/header', $data);
-            $this->load->view('customer/add');
-            $this->load->view('templates/footer');
-        }
-
-    }
-    public function add_sent(){
         $data['page_title'] = 'Kunden hinzufügen';
-        $set = array(
-        'surname' => $this->input->post('surname'),
-        'firstname' => $this->input->post('firstname'),
-        'gender' => $this->input->post('gender'));
-        $this->load->model('customer_model');
-        $this->customer_model->saveCustomer($set);
         $this->load->view('templates/header', $data);
-        $this->load->view("customer/add", $set);
-        $this->load->view('templates/footer'); 
+        if(strcmp($sent, "sent") == 0){
+            $set = array(
+            'surname' => $this->input->post('surname'),
+            'firstname' => $this->input->post('firstname'),
+            'gender' => $this->input->post('gender'));
+            $this->load->model('customer_model');
+            $this->customer_model->saveCustomer($set);
+            $this->load->view("customer/add", $set);
+        }else{
+            $this->load->view('customer/add');
+        }
+        $this->load->view('templates/footer');
     }
     public function search(){
         $data['page_title'] = 'Kundensuche';
