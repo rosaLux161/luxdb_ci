@@ -66,7 +66,6 @@ class Contract extends CI_Controller {
         $data['page_title'] = 'Auftragsanzeige';
         $this->load->model('contract_model');
         if(strcmp($type, "id") == 0){
-            echo 'TESTETSTESTSTSTST';
             $result = array(
                 'result' => $this->contract_model->getContractByCusId($this->input->post('id'))
             );
