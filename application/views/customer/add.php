@@ -5,7 +5,7 @@
 				<br/>
 				<div id="form_input">
 					<?php
-						echo form_open('customer/add_sent');
+						echo form_open('customer/add/sent');
 						
 						echo form_label('Nachname:', 'surname');
 						$data= array(

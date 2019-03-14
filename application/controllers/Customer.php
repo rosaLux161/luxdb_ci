@@ -9,11 +9,20 @@ class Customer extends CI_Controller {
         $this->load->view('home');
         $this->load->view('templates/footer');
     }
-    public function add(){
-        $data['page_title'] = 'Kunden hinzufügen';
-        $this->load->view('templates/header', $data);
-        $this->load->view('customer/add');
-        $this->load->view('templates/footer');
+
+    ###
+    #   Methoden zum Hinzufügen eines Kunden
+    ###
+    public function add($sent = ""){
+        if(strcmp($sent, "sent") == 0){
+
+        }else{
+            $data['page_title'] = 'Kunden hinzufügen';
+            $this->load->view('templates/header', $data);
+            $this->load->view('customer/add');
+            $this->load->view('templates/footer');
+        }
+
     }
     public function add_sent(){
         $data['page_title'] = 'Kunden hinzufügen';
