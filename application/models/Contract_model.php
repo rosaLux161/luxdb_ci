@@ -11,7 +11,7 @@ class Contract_model extends CI_Model {
         return $query->result();
     }
     public function getContractByCusId($id){
-        $this->db->select('contractid, details');
+        $this->db->select('contractid, details, customer.customerid');
         $this->db->from('contract');
         $this->db->join('customer', 'customer.customerid = contract.customerid');
         $this->db->where('contract.customerid',$id);
