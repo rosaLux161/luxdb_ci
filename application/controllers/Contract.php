@@ -67,6 +67,11 @@ class Contract extends CI_Controller {
         $this->load->model('contract_model');
         if(strcmp($type, "id") == 0){
             echo 'TESTETSTESTSTSTST';
+            $result = array(
+                'result' => $this->contract_model->getContractByCusId($this->input->post('id'))
+            );
+            $this->load->view('templates/header', $data);
+            $this->load->view('contract/show', $result);
         }else{
 
 
