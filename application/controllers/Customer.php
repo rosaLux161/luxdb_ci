@@ -33,6 +33,25 @@ class Customer extends CI_Controller {
             $this->load->view('templates/footer');
         }   
     }
+    ############################################
+    #   Methode zum Anzeigen eines Kunden
+    ############################################
+    public function show($id){
+        $data['page_title'] = 'Kundenanzeige';
+        $this->load->model('customer_model');
+        if(isset($id)){
+            $result = array(
+                'result' => $this->customer_model->getCustomerById($id)
+            );
+        }else{
+            $result = array(
+                'result' => $this->customer_model->getCustomerById($this->input->post('id'))
+            );
+        }
+        $this->load->view('templates/header', $data);
+        $this->load->view('customer/show', $result);
+        $this->load->view('templates/footer');
+    }
     public function search(){
         $data['page_title'] = 'Kundensuche';
         $this->load->view('templates/header', $data);
@@ -50,23 +69,7 @@ class Customer extends CI_Controller {
         
         $this->load->view('templates/footer');
     }
-    public function show($id)
-	{
-        $data['page_title'] = 'Kundenanzeige';
-        $this->load->model('customer_model');
-        if(isset($id)){
-            $result = array(
-                'result' => $this->customer_model->getCustomerById($id)
-            );
-        }else{
-            $result = array(
-                'result' => $this->customer_model->getCustomerById($this->input->post('id'))
-            );
-        }
-        $this->load->view('templates/header', $data);
-        $this->load->view('customer/show', $result);
-        $this->load->view('templates/footer');
-    }
+
     public function delete(){
         $set = array(
             'id' => $this->input->post('id')
