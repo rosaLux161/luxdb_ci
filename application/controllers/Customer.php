@@ -46,13 +46,19 @@ class Customer extends CI_Controller {
         
         $this->load->view('templates/footer');
     }
-    public function show()
+    public function show($id)
 	{
         $data['page_title'] = 'Kundenanzeige';
         $this->load->model('customer_model');
-        $result = array(
-            'result' => $this->customer_model->getCustomerById($this->input->post('id'))
-        );
+        if(isset($id)){
+            $result = array(
+                'result' => $this->customer_model->getCustomerById($id)
+            );
+        }else{
+            $result = array(
+                'result' => $this->customer_model->getCustomerById($this->input->post('id'))
+            );
+        }
         $this->load->view('templates/header', $data);
         $this->load->view('customer/show', $result);
         $this->load->view('templates/footer');
