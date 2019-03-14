@@ -32,6 +32,13 @@ class Contract extends CI_Controller {
         $this->load->view('contract/search');
         $this->load->view('templates/footer');
     }
+
+    public function searchByCustomer(){
+        $data['page_title'] = 'Auftragssuche nach Kunde';
+        $this->load->view('templates/header', $data);
+        $this->load->view('contract/searchbycustomer');
+        $this->load->view('templates/footer');
+    }
     public function search_sent(){
         $data['page_title'] = 'Kundensuche';
         $this->load->model('contract_model');
