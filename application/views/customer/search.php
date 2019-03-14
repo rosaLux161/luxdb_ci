@@ -28,6 +28,8 @@
 					<th scope="col">Nachname</th>
 					<th scope="col">Vorname</th>
 					<th scope="col">Kunde ändern</th>
+					<th scope="col">Aufträge anzeigen</th>
+					<th scope="col">Auftrsg erstellen</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -38,6 +40,16 @@
 				<th scope="row">'.$row->customerid.'</th>
 				<td>'.$row->surname.'</td>
 				<td>'.$row->firstname.'</td>
+				<td>
+				<form action="'.base_url().'index.php/customer/show" method="post">
+					<button name="id" value="'.$row->customerid.'">anzeigen</button>
+				</form>
+				</td>
+				<td>
+				<form action="'.base_url().'index.php/customer/show" method="post">
+					<button name="id" value="'.$row->customerid.'">anzeigen</button>
+				</form>
+				</td>
 				<td>
 				<form action="'.base_url().'index.php/customer/show" method="post">
 					<button name="id" value="'.$row->customerid.'">anzeigen</button>
