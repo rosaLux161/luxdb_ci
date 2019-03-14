@@ -10,9 +10,13 @@ class Contract_model extends CI_Model {
         $query = $this->db->get();
         return $query->result();
     }
-    public function getContractsByCustomer($id){
+    public function getContractsByCustomer($surname){
+        
+
+
         $this->db->select('contractid, details');
         $this->db->from('contract');
+        $this->db->join('customer', 'customer.customerid = contract.customerid');
         $this->db->where('customerid',$id);
         $query = $this->db->get();
         return $query->result();

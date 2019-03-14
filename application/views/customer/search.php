@@ -46,7 +46,7 @@
 				</form>
 				</td>
 				<td>
-				<form action="'.base_url().'index.php/customer/show" method="post">
+				<form action="'.base_url().'index.php/contract/show/id" method="post">
 					<button name="id" value="'.$row->customerid.'">anzeigen</button>
 				</form>
 				</td>

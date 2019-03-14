@@ -43,7 +43,7 @@ class Contract extends CI_Controller {
         $data['page_title'] = 'Auftragssuche';
         $this->load->model('contract_model');
         $result = array(
-            'result' => $this->conrtact_model->getContractsByCustomer($this->input->post('surname'))
+            'result' => $this->contract_model->getContractsByCustomer($this->input->post('surname'))
         );
         $this->load->view('templates/header', $data);;
         $this->load->view('contract/searchbycustomer', $result);
@@ -61,17 +61,24 @@ class Contract extends CI_Controller {
         
         $this->load->view('templates/footer');
     }
-    public function show()
+    public function show($type = "user")
 	{
-        
         $data['page_title'] = 'Auftragsanzeige';
         $this->load->model('contract_model');
-        $result = array(
-            'result' => $this->contract_model->getContractById($this->input->post('id'))
-        );
-        $this->load->view('templates/header', $data);
-        $this->load->view('contract/show', $result);
+        if(strcmp($type, "id") == 0){
+            echo 'TESTETSTESTSTSTST';
+        }else{
+
+
+            $result = array(
+                'result' => $this->contract_model->getContractById($this->input->post('id'))
+            );
+            $this->load->view('templates/header', $data);
+            $this->load->view('contract/show', $result);
+
+        }
         $this->load->view('templates/footer');
+
     }
     public function delete(){
         $set = array(
