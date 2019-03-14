@@ -2,6 +2,9 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Customer extends CI_Controller {
+    ############################################
+    #   Startseite anzeigen
+    ############################################
 	public function index()
 	{
         $data['page_title'] = 'Startseite';
@@ -9,19 +12,19 @@ class Customer extends CI_Controller {
         $this->load->view('home');
         $this->load->view('templates/footer');
     }
-
-    ###
+    ############################################
     #   Methode zum Hinzufügen eines Kunden
-    ###
-    public function add($sent = ""){
-        if(strcmp($sent, "sent") == 0){
-            $set = array(
-            'surname' => $this->input->post('surname'),
-            'firstname' => $this->input->post('firstname'),
-            'gender' => $this->input->post('gender'));
+    ############################################
+    public function add($site = ""){
+        if(strcmp($site, "sent") == 0){
             $this->load->model('customer_model');
-            $customerid = $this->customer_model->saveCustomer($set);
-            #$this->load->view("customer/add", $set);
+            $customerid = $this->customer_model->saveCustomer(
+                array(
+                    'surname' => $this->input->post('surname'),
+                    'firstname' => $this->input->post('firstname'),
+                    'gender' => $this->input->post('gender')
+                )
+            );
             $this->show($customerid);
         }else{
             $data['page_title'] = 'Kunden hinzufügen';
