@@ -11,23 +11,24 @@ class Customer extends CI_Controller {
     }
 
     ###
-    #   Methoden zum Hinzufügen eines Kunden
+    #   Methode zum Hinzufügen eines Kunden
     ###
     public function add($sent = ""){
-        $data['page_title'] = 'Kunden hinzufügen';
-        $this->load->view('templates/header', $data);
         if(strcmp($sent, "sent") == 0){
             $set = array(
             'surname' => $this->input->post('surname'),
             'firstname' => $this->input->post('firstname'),
             'gender' => $this->input->post('gender'));
             $this->load->model('customer_model');
-            $this->customer_model->saveCustomer($set);
-            $this->load->view("customer/add", $set);
+            $customerid = $this->customer_model->saveCustomer($set);
+            #$this->load->view("customer/add", $set);
+            $this->show($customerid);
         }else{
+            $data['page_title'] = 'Kunden hinzufügen';
+            $this->load->view('templates/header', $data);
             $this->load->view('customer/add');
-        }
-        $this->load->view('templates/footer');
+            $this->load->view('templates/footer');
+        }   
     }
     public function search(){
         $data['page_title'] = 'Kundensuche';

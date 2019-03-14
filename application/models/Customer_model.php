@@ -12,6 +12,8 @@ class Customer_model extends CI_Model {
                 'gender' -> $gender
             );*/
             $this->db->insert('customer',$insert);
+            $insertid = $this->db->insert_id();
+            return  $insertid;
         }
         public function updateCustomer($insert){
             $s = $insert['surname'];
