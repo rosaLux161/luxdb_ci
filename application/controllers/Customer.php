@@ -36,7 +36,7 @@ class Customer extends CI_Controller {
     ############################################
     #   Methode zum Anzeigen eines Kunden
     ############################################
-    public function show($id){
+    public function show($id = 0){
         $data['page_title'] = 'Kundenanzeige';
         $this->load->model('customer_model');
         if(isset($id)){
