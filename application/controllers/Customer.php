@@ -42,52 +42,52 @@ class Customer extends CI_Controller {
         $this->load->view('customer/show', $result);
         $this->load->view('templates/footer');
     }
+    ############################################
+    #   Methode zum Suchen eines Kunden
+    ############################################
     public function search($site =""){
+        $data['page_title'] = 'Kundensuche';
+        $this->load->view('templates/header', $data);
         if(strcmp($site, "sent") == 0){
-            $data['page_title'] = 'Kundensuche';
             $this->load->model('customer_model');
             $result = array(
                 'result' => $this->customer_model->getCustomerBySurname($this->input->post('surname'))
             );
-            $this->load->view('templates/header', $data);;
             $this->load->view('customer/search', $result);
-            
-            $this->load->view('templates/footer');
         }else{
-            $data['page_title'] = 'Kundensuche';
-            $this->load->view('templates/header', $data);
             $this->load->view('customer/search');
-            $this->load->view('templates/footer');
         }
-
+        $this->load->view('templates/footer');
     }
-
+    ############################################
+    #   Methode zum Löschen eines Kunden
+    ############################################
     public function delete(){
-        $set = array(
+        $id = array(
             'id' => $this->input->post('id')
         );
         $this->load->model('customer_model');
-        $this->customer_model->deleteCustomer($set);
+        $this->customer_model->deleteCustomerById($id);
         $this->search();
     }
+    ############################################
+    #   Methode zum AKtualisieren eines Kunden
+    ############################################   
     public function update(){
         $data['page_title'] = 'Kundenanzeige';
-        $set = array(
+        $changes = array(
             'id' => $this->input->post('id'),
             'surname' => $this->input->post('surname'),
             'firstname' => $this->input->post('firstname'),
             'gender' => $this->input->post('gender'));
         $this->load->model('customer_model');
-        $this->customer_model->updateCustomer($set);
-
-        $result = array(
-            'result' => $this->customer_model->getCustomerById($this->input->post('id'))
-        );
-
-        $this->load->view('templates/header', $data);
-        $this->load->view("customer/show", $result);
-        $this->load->view('templates/footer');
-
-
+        $this->customer_model->updateCustomer($changes);
+        $this->show($this->input->post('id'));
+        #$result = array(
+        #    'result' => $this->customer_model->getCustomerById($this->input->post('id'))
+        #);
+        #$this->load->view('templates/header', $data);
+        #$this->load->view("customer/show", $result);
+        #$this->load->view('templates/footer');
     }
 }

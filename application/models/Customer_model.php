@@ -29,8 +29,8 @@ class Customer_model extends CI_Model {
             
             $this->db->update('customer',$insert);
         }
-        public function deleteCustomer($insert){
-            $this->db->delete('customer', array('customerid' => $insert['id'])); 
+        public function deleteCustomerById($id){
+            $this->db->delete('customer', array('customerid' => $id['id'])); 
         }
         public function getCustomerBySurname($surname){
             $this->db->select('customerid, surname, firstname, gender');
