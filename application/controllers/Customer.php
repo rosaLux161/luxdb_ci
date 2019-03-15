@@ -42,22 +42,24 @@ class Customer extends CI_Controller {
         $this->load->view('customer/show', $result);
         $this->load->view('templates/footer');
     }
-    public function search(){
-        $data['page_title'] = 'Kundensuche';
-        $this->load->view('templates/header', $data);
-        $this->load->view('customer/search');
-        $this->load->view('templates/footer');
-    }
-    public function search_sent(){
-        $data['page_title'] = 'Kundensuche';
-        $this->load->model('customer_model');
-        $result = array(
-            'result' => $this->customer_model->getCustomerBySurname($this->input->post('surname'))
-        );
-        $this->load->view('templates/header', $data);;
-        $this->load->view('customer/search', $result);
-        
-        $this->load->view('templates/footer');
+    public function search($site =""){
+        if(strcmp($site, "sent") == 0){
+            $data['page_title'] = 'Kundensuche';
+            $this->load->model('customer_model');
+            $result = array(
+                'result' => $this->customer_model->getCustomerBySurname($this->input->post('surname'))
+            );
+            $this->load->view('templates/header', $data);;
+            $this->load->view('customer/search', $result);
+            
+            $this->load->view('templates/footer');
+        }else{
+            $data['page_title'] = 'Kundensuche';
+            $this->load->view('templates/header', $data);
+            $this->load->view('customer/search');
+            $this->load->view('templates/footer');
+        }
+
     }
 
     public function delete(){
