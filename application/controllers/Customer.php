@@ -39,7 +39,7 @@ class Customer extends CI_Controller {
     public function show($id = 0){
         $data['page_title'] = 'Kundenanzeige';
         $this->load->model('customer_model');
-        if(isset($id)){
+        if($id != 0){
             $result = array(
                 'result' => $this->customer_model->getCustomerById($id)
             );

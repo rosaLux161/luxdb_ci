@@ -1,7 +1,7 @@
 <?php
 					if(isset($result)){
                         echo base_url().'index.php/customer/show/'.$result[0]->customerid;
-						echo form_open('customer/update'      );
+						echo form_open('customer/update');
                         
                         echo form_label('Kundennummer:', 'id');
 						$data= array(
