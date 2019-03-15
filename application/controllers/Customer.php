@@ -8,7 +8,7 @@ class Customer extends CI_Controller {
     public function add($site = ""){
         if(strcmp($site, "sent") == 0){
             $this->load->model('customer_model');
-            $customerid = $this->customer_model->saveCustomer(
+            $customerid = $this->customer_model->add(
                 array(
                     'surname' => $this->input->post('surname'),
                     'firstname' => $this->input->post('firstname'),
@@ -51,7 +51,7 @@ class Customer extends CI_Controller {
         if(strcmp($site, "sent") == 0){
             $this->load->model('customer_model');
             $result = array(
-                'result' => $this->customer_model->getCustomerBySurname($this->input->post('surname'))
+                'result' => $this->customer_model->getCustomersBySurname($this->input->post('surname'))
             );
             $this->load->view('customer/search', $result);
         }else{
@@ -71,7 +71,7 @@ class Customer extends CI_Controller {
         $this->search();
     }
     ############################################
-    #   Methode zum AKtualisieren eines Kunden
+    #   Methode zum Aktualisieren eines Kunden
     ############################################   
     public function update(){
         $data['page_title'] = 'Kundenanzeige';
@@ -81,13 +81,7 @@ class Customer extends CI_Controller {
             'firstname' => $this->input->post('firstname'),
             'gender' => $this->input->post('gender'));
         $this->load->model('customer_model');
-        $this->customer_model->updateCustomer($changes);
+        $this->customer_model->update($changes);
         $this->show($this->input->post('id'));
-        #$result = array(
-        #    'result' => $this->customer_model->getCustomerById($this->input->post('id'))
-        #);
-        #$this->load->view('templates/header', $data);
-        #$this->load->view("customer/show", $result);
-        #$this->load->view('templates/footer');
     }
 }
