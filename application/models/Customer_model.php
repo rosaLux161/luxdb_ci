@@ -23,16 +23,6 @@ class Customer_model extends CI_Model {
             return $result->result();
         }
         public function update($insert){
-            /*$s = $insert['surname'];
-            $f = $insert['firstname'];
-            $g = $insert['gender'];
-            $this->db->where('customerid', $insert['id']);
-            $insert = array(
-                'surname' => $s,
-                'firstname' => $f,
-                'gender' => $g,
-            );
-            */
             $this->db->where('customerid', $insert['id']);
             $insert = array(
                 'surname' => $insert['surname'],
@@ -44,5 +34,4 @@ class Customer_model extends CI_Model {
         public function deleteCustomerById($id){
             $this->db->delete('customer', array('customerid' => $id['id'])); 
         }
-
 }
