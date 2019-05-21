@@ -8,7 +8,7 @@
       <footer class="sticky-footer bg-white">
         <div class="container my-auto">
           <div class="copyright text-center my-auto">
-            <span>Copyright &copy; Jan Lützler 2019</span>
+            <span>AWE-Projekt Zielinski - Luetzler</span>
           </div>
         </div>
       </footer>
