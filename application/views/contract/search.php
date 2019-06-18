@@ -1,4 +1,4 @@
-<?php echo form_open('contract/search_sent', 'class = "form-inline"'); ?>
+<?php echo form_open('contract/search/sent', 'class = "form-inline"'); ?>
 	<div class="form-group">
 <?php
 	echo form_label('RMA-Nummer: ', 'aid');

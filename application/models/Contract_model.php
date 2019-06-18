@@ -10,6 +10,8 @@ class Contract_model extends CI_Model {
         $query = $this->db->get();
         return $query->result();
     }
+    /*deprecated*/
+    /*
     public function getContractByCusId($id){
         $this->db->select('contractid, details, customer.customerid');
         $this->db->from('contract');
@@ -17,7 +19,7 @@ class Contract_model extends CI_Model {
         $this->db->where('contract.customerid',$id);
         $query = $this->db->get();
         return $query->result();
-    }
+    }*/
     public function getAllContracts(){
         $this->db->select('contractid, details, customerid');
         $this->db->from('contract');
@@ -40,5 +42,8 @@ class Contract_model extends CI_Model {
     }
     public function saveContract($insert){
         $this->db->insert('contract',$insert);
+    }
+    public function deleteContractById($id){
+        $this->db->delete('contract', array('contractid' => $id['id'])); 
     }
 }

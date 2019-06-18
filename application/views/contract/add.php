@@ -5,7 +5,7 @@
 				<br/>
 				<div id="form_input">
 					<?php
-						echo form_open('contract/add_sent');
+						echo form_open('contract/add/sent');
 						
 						echo form_label('Kundennummer:', 'kid');
 						$data= array(
